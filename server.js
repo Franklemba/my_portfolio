@@ -12,16 +12,13 @@ const passport = require('passport')
 // Route definitions
 const homeRouter = require('./routes/home');
 
-
 ////////////database connection////////////
-
-
 
 const localDB = "mongodb://127.0.0.1:27017/my-portfolio"
 const liveDB = "mongodb+srv://odtm00:xoxo1212@tayantpay.00zqadh.mongodb.net"
 mongoose.set('strictQuery', true);
 
-mongoose.connect(liveDB,{useNewUrlParser: true}).then(() => {
+mongoose.connect(localDB,{useNewUrlParser: true}).then(() => {
   console.log('database is connected')
 }).catch((err) => console.log('error connecting to database ', err))
   
@@ -41,14 +38,11 @@ app.set('trust proxy', 1);
 
  // Session configuration
 const sessionStore = MongoStore.create({ 
-  mongoUrl: liveDB,
+  mongoUrl: localDB,
   ttl: 14 * 24 * 60 * 60 // 14 days
 });
 
-
 // app.use(limiter);
-
-
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'mysecret',
