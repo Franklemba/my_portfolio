@@ -15,6 +15,10 @@ const clientsSchema = new mongoose.Schema({
     required: false,
     default: null
   },
+  message: {
+    type: String,
+    required: false,
+  },
   createdAt: {
     type: Date,
     required: true,

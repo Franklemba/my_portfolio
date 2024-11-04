@@ -1,7 +1,7 @@
 <div class="sidebar-wrap">
     <aside id="secondary" class="widget-area">
       <section id="block-2" class="widget widget_block widget_search">
-        <form role="search" method="get" action="https://ryancv.bslthemes.com/developer/" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search">
+        <form role="search" method="get" action="/developer/" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search">
           <label class="wp-block-search__label" for="wp-block-search__input-1">Search</label>
           <div class="wp-block-search__inside-wrapper ">
             <input class="wp-block-search__input" id="wp-block-search__input-1" placeholder="" value="" type="search" name="s" required />
@@ -14,21 +14,21 @@
           <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
             <h2 class="wp-block-heading">Recent Posts</h2>
             <ul class="wp-block-latest-posts__list wp-block-latest-posts">
-              <li>
-                <a class="wp-block-latest-posts__post-title" href="https://ryancv.bslthemes.com/developer/2020/04/28/by-spite-about-do-of-allow/">By spite about do of allow</a>
+              <!-- <li>
+                <a class="wp-block-latest-posts__post-title" href="/developer/2020/04/28/by-spite-about-do-of-allow/">By spite about do of allow</a>
               </li>
               <li>
-                <a class="wp-block-latest-posts__post-title" href="https://ryancv.bslthemes.com/developer/2020/04/28/a-song-and-dance-act/">A Song And Dance Act</a>
+                <a class="wp-block-latest-posts__post-title" href="/developer/2020/04/28/a-song-and-dance-act/">A Song And Dance Act</a>
               </li>
               <li>
-                <a class="wp-block-latest-posts__post-title" href="https://ryancv.bslthemes.com/developer/2020/04/28/music-player-design/">Music Player Design</a>
+                <a class="wp-block-latest-posts__post-title" href="/developer/2020/04/28/music-player-design/">Music Player Design</a>
               </li>
               <li>
-                <a class="wp-block-latest-posts__post-title" href="https://ryancv.bslthemes.com/developer/2020/04/28/designing-the-perfect/">Designing the perfect</a>
+                <a class="wp-block-latest-posts__post-title" href="/developer/2020/04/28/designing-the-perfect/">Designing the perfect</a>
               </li>
               <li>
-                <a class="wp-block-latest-posts__post-title" href="https://ryancv.bslthemes.com/developer/2020/04/28/creativity-is-more-than/">Creativity Is More Than</a>
-              </li>
+                <a class="wp-block-latest-posts__post-title" href="/developer/2020/04/28/creativity-is-more-than/">Creativity Is More Than</a>
+              </li> -->
             </ul>
           </div>
         </div>
@@ -37,42 +37,21 @@
         <div class="wp-block-group">
           <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
             <h2 class="wp-block-heading">Recent Comments</h2>
+           
+            
             <ol class="wp-block-latest-comments">
-              <li class="wp-block-latest-comments__comment">
-                <article>
-                  <footer class="wp-block-latest-comments__comment-meta">
-                    <span class="wp-block-latest-comments__comment-author">Ryan Adlard</span> on <a class="wp-block-latest-comments__comment-link" href="https://ryancv.bslthemes.com/developer/2020/04/28/creativity-is-more-than/#comment-2">Creativity Is More Than</a>
-                  </footer>
-                </article>
-              </li>
-              <li class="wp-block-latest-comments__comment">
-                <article>
-                  <footer class="wp-block-latest-comments__comment-meta">
-                    <span class="wp-block-latest-comments__comment-author">James Rodri</span> on <a class="wp-block-latest-comments__comment-link" href="https://ryancv.bslthemes.com/developer/2020/04/28/music-player-design/#comment-3">Music Player Design</a>
-                  </footer>
-                </article>
-              </li>
-              <li class="wp-block-latest-comments__comment">
-                <article>
-                  <footer class="wp-block-latest-comments__comment-meta">
-                    <span class="wp-block-latest-comments__comment-author">James Rodri</span> on <a class="wp-block-latest-comments__comment-link" href="https://ryancv.bslthemes.com/developer/2020/04/28/a-song-and-dance-act/#comment-5">A Song And Dance Act</a>
-                  </footer>
-                </article>
-              </li>
-              <li class="wp-block-latest-comments__comment">
-                <article>
-                  <footer class="wp-block-latest-comments__comment-meta">
-                    <span class="wp-block-latest-comments__comment-author">John Doe</span> on <a class="wp-block-latest-comments__comment-link" href="https://ryancv.bslthemes.com/developer/2020/04/28/a-song-and-dance-act/#comment-4">A Song And Dance Act</a>
-                  </footer>
-                </article>
-              </li>
-              <li class="wp-block-latest-comments__comment">
-                <article>
-                  <footer class="wp-block-latest-comments__comment-meta">
-                    <span class="wp-block-latest-comments__comment-author">Ryan Adlard</span> on <a class="wp-block-latest-comments__comment-link" href="https://ryancv.bslthemes.com/developer/2020/04/28/by-spite-about-do-of-allow/#comment-8">By spite about do of allow</a>
-                  </footer>
-                </article>
-              </li>
+
+              <% comments.forEach(comment => { %>
+                <li class="wp-block-latest-comments__comment">
+                  <article>
+                    <footer class="wp-block-latest-comments__comment-meta">
+                      <span class="wp-block-latest-comments__comment-author"><%=comment.name %></span> on <a class="wp-block-latest-comments__comment-link" href="#"><%= comment.message %></a>
+                    </footer>
+                  </article>
+                </li>
+               
+                <% }) %>
+              
             </ol>
           </div>
         </div>
@@ -83,7 +62,7 @@
             <h2 class="wp-block-heading">Archives</h2>
             <ul class="wp-block-archives-list wp-block-archives">
               <li>
-                <a href='https://ryancv.bslthemes.com/developer/2020/04/'>April 2020</a>
+                <!-- <a href='/developer/2020/04/'>April 2020</a> -->
               </li>
             </ul>
           </div>
@@ -94,15 +73,15 @@
           <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
             <h2 class="wp-block-heading">Categories</h2>
             <ul class="wp-block-categories-list wp-block-categories">
-              <li class="cat-item cat-item-34">
-                <a href="https://ryancv.bslthemes.com/developer/category/code/">Code</a>
+              <!-- <li class="cat-item cat-item-34">
+                <a href="/developer/category/code/">Code</a>
               </li>
               <li class="cat-item cat-item-16">
-                <a href="https://ryancv.bslthemes.com/developer/category/design/">Design</a>
+                <a href="/developer/category/design/">Design</a>
               </li>
               <li class="cat-item cat-item-17">
-                <a href="https://ryancv.bslthemes.com/developer/category/music/">Music</a>
-              </li>
+                <a href="/developer/category/music/">Music</a>
+              </li> -->
             </ul>
           </div>
         </div>

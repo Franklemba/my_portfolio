@@ -10,17 +10,20 @@ const items = [
     { slug: 'item-3', status: 1 },
     { slug: 'item-4', status: 1 },
     { slug: 'item-5', status: 1 },
-    { slug: 'item-6', status: 1 },
+    { slug: 'item-6', status: 0 },
     { slug: 'item-7', status: 1 },
     { slug: 'item-8', status: 1 },
 ];
 
 
 
-router.get("/", (req,res) => {
+router.get("/", async (req,res) => {
+
+  const comments = await Client.find();
 
     res.render("home/home",{
-      items
+      items,
+      comments
     })
 })
 
