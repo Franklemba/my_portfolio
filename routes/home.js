@@ -1,7 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const fs = require('fs');
 const Client = require("../models/clientsSchema.js");
 
+
+const COUNTER_FILE = 'visitor_count.txt';
+
+// Initialize counter if file doesn't exist
+if (!fs.existsSync(COUNTER_FILE)) {
+    fs.writeFileSync(COUNTER_FILE, '0');
+}
 
 
 const items = [
@@ -19,12 +27,25 @@ const items = [
 
 router.get("/", async (req,res) => {
 
-  const comments = await Client.find();
+  
+  try {
+    // Read current count
+    const comments = await Client.find();
+    let count = parseInt(fs.readFileSync(COUNTER_FILE));
+    count++;
+
+    fs.writeFileSync(COUNTER_FILE, count.toString());
 
     res.render("home/home",{
       items,
       comments
     })
+
+  } catch (error) {
+      res.status(500).json({ error: 'Failed to update visitor count' });
+  }
+
+    
 })
 
 

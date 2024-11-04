@@ -18,7 +18,7 @@ const localDB = "mongodb://127.0.0.1:27017/my-portfolio"
 const liveDB = "mongodb+srv://odtm00:xoxo1212@tayantpay.00zqadh.mongodb.net"
 mongoose.set('strictQuery', true);
 
-mongoose.connect(liveDB,{useNewUrlParser: true}).then(() => {
+mongoose.connect(localDB,{useNewUrlParser: true}).then(() => {
   console.log('database is connected')
 }).catch((err) => console.log('error connecting to database ', err))
   
@@ -33,12 +33,13 @@ app.use(expressLayouts)
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 app.use(express.urlencoded({ extended: false }))
+app.use(express.json());
 
 app.set('trust proxy', 1);
 
  // Session configuration
 const sessionStore = MongoStore.create({ 
-  mongoUrl: liveDB,
+  mongoUrl: localDB,
   ttl: 14 * 24 * 60 * 60 // 14 days
 });
 
