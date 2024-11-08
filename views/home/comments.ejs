@@ -1,0 +1,24 @@
+<section id="block-4" class="widget widget_block">
+    <div class="wp-block-group">
+      <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
+        <h2 class="wp-block-heading">Recent Comments</h2>
+        <h4 class="wp-block-heading">Total of <%=count %> interactions</h4>
+       
+        
+        <ol class="wp-block-latest-comments">
+
+          <% comments.forEach(comment => { %>
+            <li class="wp-block-latest-comments__comment">
+              <article>
+                <footer class="wp-block-latest-comments__comment-meta">
+                  <span class="wp-block-latest-comments__comment-author"><%=comment.name %></span> on <a class="wp-block-latest-comments__comment-link" href="#"><%= comment.message %></a>
+                </footer>
+              </article>
+            </li>
+           
+            <% }) %>
+          
+        </ol>
+      </div>
+    </div>
+  </section>

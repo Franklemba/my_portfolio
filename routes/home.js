@@ -34,6 +34,8 @@ router.get("/", async (req,res) => {
     let count = parseInt(fs.readFileSync(COUNTER_FILE));
     count++;
 
+    console.log('We have a total of ' + count + 'interactions');
+
     fs.writeFileSync(COUNTER_FILE, count.toString());
 
     res.render("home/home",{
@@ -69,6 +71,31 @@ router.post("/form", async (req,res) => {
    }
   
 });
+
+
+
+
+router.get("/comments", async (req,res) => {
+
+  
+  try {
+    // Read current count
+    const comments = await Client.find();
+    let count = parseInt(fs.readFileSync(COUNTER_FILE));
+   
+
+    res.render("home/comments",{
+      comments,
+      count
+    })
+
+  } catch (error) {
+      res.status(500).json({ error: 'Failed to update visitor count or error displaying comments' });
+  }
+
+    
+})
+
 
 
 module.exports = router;
